@@ -26,6 +26,8 @@ private:
     Ui::AirLines *ui;
     void AviancaCostaPana();
     void AviancaCostaMexico();
+    void copaIrlinesEuropaRusia();
+    void copaIrlinesFranciaUSA();
     QList<QString>getListAirlines();
 
 

@@ -2,6 +2,7 @@ QT       += core gui \
     quick
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+INCLUDEPATH +=$$PWD
 
 CONFIG += c++11
 

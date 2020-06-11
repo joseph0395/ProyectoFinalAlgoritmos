@@ -2,6 +2,7 @@
 #include "ui_AirLines.h"
 #include <QDebug>
 #include <QLinkedList>
+#include <QQueue>
 
 AirLines::AirLines(QWidget *parent) :
     QDialog(parent),
@@ -48,6 +49,7 @@ void AirLines::on_jbtnUp_clicked(){
     }
 
 
+
 }//on_jbtnUp_clicked
 
 
@@ -75,6 +77,12 @@ void AirLines::on_jbtnSelecAirline_clicked(){
         AviancaCostaPana();
         AviancaCostaMexico();
     }
+
+    if(ui->jlAirlines->text()=="Copa Airlines"){
+        copaIrlinesFranciaUSA();
+        copaIrlinesEuropaRusia();
+    }
+
 }//on_jbtnSelecAirline_clicked
 
 
@@ -85,19 +93,20 @@ void AirLines::AviancaCostaPana(){
     double OFirstHour=8.00;
     double IFirstHour=10.00;
 
-    double OSecondHour=9.30;
-    double ISecondour=11.30;
+    double OSecondHour=9.35;
+    double ISecondour=11.35;
 
-    double OThirdHour=13.00;
-    double IThirdHour=15.00;
+    QQueue<double> cola;
+    cola.enqueue(ISecondour);
+    cola.enqueue(OSecondHour);
 
-    double OFourthHour=16.00;
-    double IFourthHour=18.00;
+    cola.enqueue(IFirstHour);
+    cola.enqueue(OFirstHour);
 
-    ui->jcbxCountriesFirst->addItem(QString::number(OFirstHour)+"-"+QString::number(IFirstHour)+" am");
-    ui->jcbxCountriesFirst->addItem(QString::number(OSecondHour)+"-"+QString::number(ISecondour)+" am");
-    ui->jcbxCountriesFirst->addItem(QString::number(OThirdHour)+"-"+QString::number(IThirdHour)+" pm");
-    ui->jcbxCountriesFirst->addItem(QString::number(OFourthHour)+"-"+QString::number(IFourthHour)+" pm");
+    ui->jcbxCountriesFirst->clear();
+    ui->jcbxCountriesFirst->addItem(QString::number(cola.dequeue())+"-"+QString::number(cola.dequeue())+" am");
+    ui->jcbxCountriesFirst->addItem(QString::number(cola.dequeue())+"-"+QString::number(cola.dequeue())+" am");
+
 }//Para agregar las horas y los destinos al primer Label y combo box
 
 
@@ -111,19 +120,64 @@ void AirLines::AviancaCostaMexico(){
     double OSecondHour=9.35;
     double ISecondour=10.55;
 
-    double OThirdHour=4.35;
-    double IThirdHour=5.45;
+    QQueue<double> cola;
+    cola.enqueue(ISecondour);
+    cola.enqueue(OSecondHour);
 
-    double OFourthHour=7.25;
-    double IFourthHour=8.45;
+    cola.enqueue(IFirstHour);
+    cola.enqueue(OFirstHour);
 
-    ui->jcbxCountriesSecond->addItem(QString::number(OFirstHour)+"-"+QString::number(IFirstHour)+" am");
-    ui->jcbxCountriesSecond->addItem(QString::number(OSecondHour)+"-"+QString::number(ISecondour)+" am");
-    ui->jcbxCountriesSecond->addItem(QString::number(OThirdHour)+"-"+QString::number(IThirdHour)+" pm");
-    ui->jcbxCountriesSecond->addItem(QString::number(OFourthHour)+"-"+QString::number(IFourthHour)+" pm");
+    ui->jcbxCountriesSecond->clear();
+    ui->jcbxCountriesSecond->addItem(QString::number(cola.dequeue())+"-"+QString::number(cola.dequeue())+" am");
+    ui->jcbxCountriesSecond->addItem(QString::number(cola.dequeue())+"-"+QString::number(cola.dequeue())+" pm");
+
 }//Para agregar las horas y los destinos al segundo Label y combo box
 
 
+void AirLines::copaIrlinesEuropaRusia(){
+    QString setLabel="Europa->\nRusia";
+    ui->jlbCountriesFirst->setText(setLabel);
+
+    double OFirstHour=6.35;
+    double IFirstHour=11.45;
+
+    double OSecondHour=7.15;
+    double ISecondour=11.55;
+
+    QQueue<double> cola;
+    cola.enqueue(ISecondour);
+    cola.enqueue(OSecondHour);
+
+    cola.enqueue(IFirstHour);
+    cola.enqueue(OFirstHour);
+
+    ui->jcbxCountriesFirst->clear();
+    ui->jcbxCountriesFirst->addItem(QString::number(cola.dequeue())+"-"+QString::number(cola.dequeue())+" am");
+    ui->jcbxCountriesFirst->addItem(QString::number(cola.dequeue())+"-"+QString::number(cola.dequeue())+" pm");
+}
+
+void AirLines::copaIrlinesFranciaUSA(){
+    QString setLabel="Francia->\nU.S.A";
+    ui->jlbCountriesSecond->setText(setLabel);
+
+    double OFirstHour=7.05;
+    double IFirstHour=10.07;
+
+    double OSecondHour=8.20;
+    double ISecondour=11.35;
+
+    QQueue<double> cola;
+    cola.enqueue(ISecondour);
+    cola.enqueue(OSecondHour);
+
+    cola.enqueue(IFirstHour);
+    cola.enqueue(OFirstHour);
+
+    ui->jcbxCountriesSecond->clear();
+    ui->jcbxCountriesSecond->addItem(QString::number(cola.dequeue())+"-"+QString::number(cola.dequeue())+" am");
+    ui->jcbxCountriesSecond->addItem(QString::number(cola.dequeue())+"-"+QString::number(cola.dequeue())+" pm");
+
+}
 
 void AirLines::on_jbtnAddAirline_clicked(){
 
