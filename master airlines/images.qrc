@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>imagenes qt/dragon lich 2.jpg</file>
+        <file>imagenes qt/dragon lich.jpg</file>
+        <file>imagenes qt/dragon  lich volteado.jpeg</file>
+    </qresource>
+</RCC>
