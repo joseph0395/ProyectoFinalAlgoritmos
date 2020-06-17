@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>870</width>
+    <width>961</width>
     <height>375</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>871</width>
+     <width>961</width>
      <height>381</height>
     </rect>
    </property>
@@ -137,51 +137,6 @@
     <string>Siguiente</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="jbtnAddAirline">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>320</y>
-     <width>141</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Gabriola</family>
-     <pointsize>16</pointsize>
-     <underline>true</underline>
-    </font>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="text">
-    <string>Añadir</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lEAddAirline">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>320</y>
-     <width>161</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Courier New</family>
-     <pointsize>12</pointsize>
-     <weight>75</weight>
-     <italic>true</italic>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QPushButton" name="jbtnSelecAirline">
    <property name="geometry">
     <rect>
@@ -205,11 +160,11 @@
     <string>Seleccionar</string>
    </property>
   </widget>
-  <widget class="QLabel" name="jlbCountriesFirst">
+  <widget class="QLabel" name="jlbCountriesOFirst">
    <property name="geometry">
     <rect>
      <x>380</x>
-     <y>30</y>
+     <y>10</y>
      <width>131</width>
      <height>31</height>
     </rect>
@@ -277,18 +232,18 @@
   <widget class="QComboBox" name="jcbxCountriesSecond">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>240</y>
+     <x>510</x>
+     <y>140</y>
      <width>181</width>
      <height>41</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="jlbCountriesSecond">
+  <widget class="QLabel" name="jlbCountriesOSecond">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>240</y>
+     <x>360</x>
+     <y>130</y>
      <width>131</width>
      <height>31</height>
     </rect>
@@ -343,12 +298,156 @@
     <string>Destinos</string>
    </property>
   </widget>
-  <widget class="QLabel" name="jlbOutputHourFirts">
+  <widget class="QPushButton" name="jbtnTravel">
    <property name="geometry">
     <rect>
-     <x>730</x>
-     <y>10</y>
+     <x>800</x>
+     <y>310</y>
      <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gabriola</family>
+     <pointsize>16</pointsize>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="text">
+    <string>Viajar</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="jlbTraveler">
+   <property name="geometry">
+    <rect>
+     <x>820</x>
+     <y>10</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>120</red>
+         <green>120</green>
+         <blue>120</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="font">
+    <font>
+     <family>Courier New</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <italic>true</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Pasajero</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lnedTravelerAge">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>50</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>--&quot;Edad&quot;--</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lnedTravelerName_2">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>100</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>--&quot;Nombre&quot;--</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lnedTravelerGender">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>150</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>--&quot;Genero&quot;--</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lnedTravelerPassport">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>200</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>-&quot;Num. Pasaporte&quot;-</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lnedTravelerNationality">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>250</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>--&quot;Nacionalidad&quot;--</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="jlbCountriesIFirst">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>40</y>
+     <width>131</width>
      <height>21</height>
     </rect>
    </property>
@@ -392,36 +491,23 @@
    <property name="font">
     <font>
      <family>Courier New</family>
-     <pointsize>8</pointsize>
+     <pointsize>10</pointsize>
      <weight>75</weight>
      <italic>true</italic>
      <bold>true</bold>
     </font>
-   </property>
-   <property name="text">
-    <string>Hora de salida</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lEOutputHourFirts">
-   <property name="geometry">
-    <rect>
-     <x>730</x>
-     <y>30</y>
-     <width>113</width>
-     <height>22</height>
-    </rect>
    </property>
    <property name="text">
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="jlbInputHourFirts">
+  <widget class="QLabel" name="jlbCountriesISecond">
    <property name="geometry">
     <rect>
-     <x>730</x>
-     <y>70</y>
-     <width>121</width>
-     <height>21</height>
+     <x>360</x>
+     <y>160</y>
+     <width>131</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="palette">
@@ -464,185 +550,14 @@
    <property name="font">
     <font>
      <family>Courier New</family>
+     <pointsize>10</pointsize>
      <weight>75</weight>
      <italic>true</italic>
      <bold>true</bold>
     </font>
    </property>
    <property name="text">
-    <string>Hora de llegada</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lEInputHourFirts">
-   <property name="geometry">
-    <rect>
-     <x>730</x>
-     <y>90</y>
-     <width>113</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="jbtnAddHoursFirst">
-   <property name="geometry">
-    <rect>
-     <x>740</x>
-     <y>120</y>
-     <width>93</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Agregar</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="jlbOutputHourSecond">
-   <property name="geometry">
-    <rect>
-     <x>730</x>
-     <y>230</y>
-     <width>121</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="palette">
-    <palette>
-     <active>
-      <colorrole role="WindowText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </active>
-     <inactive>
-      <colorrole role="WindowText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </inactive>
-     <disabled>
-      <colorrole role="WindowText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>120</red>
-         <green>120</green>
-         <blue>120</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </disabled>
-    </palette>
-   </property>
-   <property name="font">
-    <font>
-     <family>Courier New</family>
-     <weight>75</weight>
-     <italic>true</italic>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Hora de salida</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lEOutputHourSecond">
-   <property name="geometry">
-    <rect>
-     <x>730</x>
-     <y>250</y>
-     <width>113</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="jlbInputHourSecond">
-   <property name="geometry">
-    <rect>
-     <x>730</x>
-     <y>290</y>
-     <width>121</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="palette">
-    <palette>
-     <active>
-      <colorrole role="WindowText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </active>
-     <inactive>
-      <colorrole role="WindowText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </inactive>
-     <disabled>
-      <colorrole role="WindowText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>120</red>
-         <green>120</green>
-         <blue>120</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </disabled>
-    </palette>
-   </property>
-   <property name="font">
-    <font>
-     <family>Courier New</family>
-     <weight>75</weight>
-     <italic>true</italic>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Hora de llegada</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lEInputHourSecond">
-   <property name="geometry">
-    <rect>
-     <x>730</x>
-     <y>310</y>
-     <width>113</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="jbtnAddHoursSecond">
-   <property name="geometry">
-    <rect>
-     <x>740</x>
-     <y>340</y>
-     <width>93</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>agregar</string>
+    <string/>
    </property>
   </widget>
  </widget>

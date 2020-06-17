@@ -62,7 +62,7 @@
      <string>Aerolineas</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="jbtnEditor">
     <property name="geometry">
      <rect>
       <x>600</x>
@@ -85,7 +85,7 @@
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>Viajes</string>
+     <string>Editor</string>
     </property>
    </widget>
   </widget>

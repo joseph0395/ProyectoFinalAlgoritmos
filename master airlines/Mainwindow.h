@@ -18,7 +18,7 @@ public:
 private slots:
     void on_selectAirLine_clicked();
 
-    void on_pushButton_clicked();
+    void on_jbtnEditor_clicked();
 
 private:
     Ui::MainWindow *ui;

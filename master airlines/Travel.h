@@ -14,6 +14,8 @@ class Travel : public QDialog
 public:
     explicit Travel(QWidget *parent = nullptr);
     ~Travel();
+    void setName(QString name1,QString name2);
+
 
 private:
     Ui::Travel *ui;

@@ -19,17 +19,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     AirLines.cpp \
+    Editor.cpp \
     Travel.cpp \
     main.cpp \
     Mainwindow.cpp
 
 HEADERS += \
     AirLines.h \
+    Editor.h \
     Mainwindow.h \
     Travel.h
 
 FORMS += \
     AirLines.ui \
+    Editor.ui \
     Mainwindow.ui \
     Travel.ui
 
