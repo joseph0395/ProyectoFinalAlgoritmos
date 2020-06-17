@@ -3,13 +3,17 @@
 #include <QDebug>
 #include <QLinkedList>
 #include <QQueue>
+#include <QVector>
 #include "Travel.h"
+#include "Editor.h"
+
 
 AirLines::AirLines(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AirLines)
 {
     ui->setupUi(this);
+    AirLines::list<<list<<"Avianca"<<"Copa Airlines"<<"Iberia"<<"Delta"<<"Latam"<<"American Airlines"<<"Lufthansa";
 
 }
 
@@ -23,17 +27,21 @@ AirLines::~AirLines()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 int i=0;
 bool paso=false;
-QList<QString>list;
 
-QList<QString> AirLines::getListAirlines(){
-    list<<"Avianca"<<"Copa Airlines"<<"Iberia"<<"Delta"<<"Latam"<<"American Airlines"<<"Lufthansa";
-    return list;
-}
+void AirLines::UpdateList(){
+    Editor ed;
+    QVector<QString>vector=ed.sendNewAirline();
+    for(int i=0; i<vector.length();i++){
+        list<<vector[i];
+    }
+}//Actualiza las lista si en el editor se le aplica algun cambio
 
+void AirLines::on_jbtnUpdateList_clicked(){
+   UpdateList();
+}//accede al UpdateList para que mi list sea actualizada
 
 
 void AirLines::on_jbtnUp_clicked(){
-    list=getListAirlines();
 
     if(paso==false){
       i--;
@@ -51,11 +59,10 @@ void AirLines::on_jbtnUp_clicked(){
 
 
 
-}//on_jbtnUp_clicked
+}//retrocede en la lista
 
 
 void AirLines::on_jbtnDown_clicked(){
-    list=getListAirlines();
 
         if(paso==true){
             i++;
@@ -70,7 +77,7 @@ void AirLines::on_jbtnDown_clicked(){
 
         i++;
 
-}//on_jbtnDown_clicked
+}//va hacia adelante (siguiente) en mi list
 
 
 void AirLines::on_jbtnSelecAirline_clicked(){
@@ -85,7 +92,8 @@ void AirLines::on_jbtnSelecAirline_clicked(){
         copaIrlinesFranciaUSA();
     }
 
-}//on_jbtnSelecAirline_clicked
+
+}//detecta cual fue la aerolinea seleccionada  para cargar a los label los destinos
 
 
 void AirLines::AviancaCostaPana(){
@@ -183,21 +191,59 @@ void AirLines::copaIrlinesFranciaUSA(){
 }
 
 
+//--------------------------------------------------------------------------------------------------------------------------//
+QVector<QString> vectorOutPut;//Vector para guardar los lugares de salida de los vuelos
+QVector<QString> vectorInput;//Vector para guardar los lugares de llegadas de los vuelos
+
+//Estos metodos seran llamados x el metodo addTravel para agregar el name que se pasara por parametro
+void addOutPut(QString name){
+   vectorOutPut<<name;
+}
+void addInPut(QString name){
+   vectorInput<<name;
+}
+
+//Dependiendo del radio boton seleccionado sera el nombre que guarde en cada array de salida y llegada
+void AirLines::addTravel(){
+    if(ui->jrbtnFirstAirline->isChecked()==true){
+        addOutPut(ui->jlbCountriesOFirst->text());
+        addInPut(ui->jlbCountriesIFirst->text());
+    }//El primer radio boton
+
+    if(ui->jrbtnSecondAirline->isChecked()==true){
+        addOutPut(ui->jlbCountriesOSecond->text());
+        addInPut(ui->jlbCountriesISecond->text());
+    }//El segundo radio boton
+
+}//agrega los detinos de llegada y salida a sus respectivos array
+
+//Llama al metodo addTravel pasandole por parametro los array con los detinos que lleve hasta ese momento para mostrar la ventana de vuelos
 void AirLines::on_jbtnTravel_clicked(){
-    Travel travel;
-    travel.setName(ui->jlbCountriesOFirst->text(),ui->jlbCountriesIFirst->text());
+    /*Travel travel;
+    addTravel();
+    travel.setName(vectorInput,vectorOutPut);
     travel.setModal(true);
     travel.exec();
+    */
+
+    addTraveler();
+   qDebug()<<namesTraveler;
+
+}//muestra la ventana de vuelos con los vuelos hasta el momento
+
+
+
+void AirLines::addTraveler(){
+    QString traveler="";
+
+    traveler+=ui->lnedTravelerAge->text()+"/";
+    traveler+=ui->lnedTravelerName_2->text()+"/";
+    traveler+=ui->lnedTravelerGender->text()+"/";
+    traveler+=ui->lnedTravelerPassport->text()+"/";
+    traveler+=ui->lnedTravelerNationality->text()+"#";
+    namesTraveler<<traveler;
 
 }
 
 
 
-
-
-void AirLines::getCountrys(){
-
-
-
-
-}

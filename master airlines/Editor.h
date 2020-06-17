@@ -15,6 +15,14 @@ public:
     explicit Editor(QWidget *parent = nullptr);
     ~Editor();
 
+    QVector<QString> sendNewAirline();
+    void addNewAirline();
+
+private slots:
+    void on_jbtnAddAirline_clicked();
+
+    void on_jbtnDeleteAirline_clicked();
+
 private:
     Ui::Editor *ui;
 };
