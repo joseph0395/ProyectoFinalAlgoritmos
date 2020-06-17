@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QLinkedList>
 #include <QQueue>
+#include "Travel.h"
 
 AirLines::AirLines(QWidget *parent) :
     QDialog(parent),
@@ -76,19 +77,20 @@ void AirLines::on_jbtnSelecAirline_clicked(){
     if(ui->jlAirlines->text()=="Avianca"){
         AviancaCostaPana();
         AviancaCostaMexico();
+
     }
 
     if(ui->jlAirlines->text()=="Copa Airlines"){
-        copaIrlinesFranciaUSA();
         copaIrlinesEuropaRusia();
+        copaIrlinesFranciaUSA();
     }
 
 }//on_jbtnSelecAirline_clicked
 
 
 void AirLines::AviancaCostaPana(){
-    QString setLabel="Costa Rica->\nPanama";
-    ui->jlbCountriesFirst->setText(setLabel);
+    ui->jlbCountriesOSecond->setText("Costa Rica->");
+    ui->jlbCountriesISecond->setText("Panama");
 
     double OFirstHour=8.00;
     double IFirstHour=10.00;
@@ -111,8 +113,8 @@ void AirLines::AviancaCostaPana(){
 
 
 void AirLines::AviancaCostaMexico(){
-    QString setLabel="Costa Rica->\nMexico";
-    ui->jlbCountriesSecond->setText(setLabel);
+    ui->jlbCountriesOFirst->setText("Costa Rica->");
+    ui->jlbCountriesIFirst->setText("Mexico");
 
     double OFirstHour=5.15;
     double IFirstHour=6.45;
@@ -135,8 +137,9 @@ void AirLines::AviancaCostaMexico(){
 
 
 void AirLines::copaIrlinesEuropaRusia(){
-    QString setLabel="Europa->\nRusia";
-    ui->jlbCountriesFirst->setText(setLabel);
+    ui->jlbCountriesOFirst->setText("Europa->");
+    ui->jlbCountriesIFirst->setText("Rusia");
+
 
     double OFirstHour=6.35;
     double IFirstHour=11.45;
@@ -157,8 +160,8 @@ void AirLines::copaIrlinesEuropaRusia(){
 }
 
 void AirLines::copaIrlinesFranciaUSA(){
-    QString setLabel="Francia->\nU.S.A";
-    ui->jlbCountriesSecond->setText(setLabel);
+    ui->jlbCountriesOSecond->setText("Francia->");
+    ui->jlbCountriesISecond->setText("U.S.A");
 
     double OFirstHour=7.05;
     double IFirstHour=10.07;
@@ -179,7 +182,22 @@ void AirLines::copaIrlinesFranciaUSA(){
 
 }
 
-void AirLines::on_jbtnAddAirline_clicked(){
+
+void AirLines::on_jbtnTravel_clicked(){
+    Travel travel;
+    travel.setName(ui->jlbCountriesOFirst->text(),ui->jlbCountriesIFirst->text());
+    travel.setModal(true);
+    travel.exec();
+
+}
+
+
+
+
+
+void AirLines::getCountrys(){
+
+
 
 
 }

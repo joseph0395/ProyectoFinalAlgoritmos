@@ -1,5 +1,6 @@
 #ifndef AIRLINES_H
 #define AIRLINES_H
+#include"Travel.h"
 
 #include <QDialog>
 
@@ -15,12 +16,14 @@ public:
     explicit AirLines(QWidget *parent = nullptr);
     ~AirLines();
 
+    void getCountrys();
 private slots:
     void on_jbtnUp_clicked();
     void on_jbtnDown_clicked();
     void on_jbtnSelecAirline_clicked();
 
-    void on_jbtnAddAirline_clicked();
+
+    void on_jbtnTravel_clicked();
 
 private:
     Ui::AirLines *ui;
@@ -29,6 +32,7 @@ private:
     void copaIrlinesEuropaRusia();
     void copaIrlinesFranciaUSA();
     QList<QString>getListAirlines();
+
 
 
 };

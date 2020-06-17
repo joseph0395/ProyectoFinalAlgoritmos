@@ -1,7 +1,7 @@
 #include "Mainwindow.h"
 #include "ui_Mainwindow.h"
 #include "AirLines.h"
-#include "Travel.h"
+#include "Editor.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -22,8 +22,11 @@ void MainWindow::on_selectAirLine_clicked(){
     airLines.exec();
 }//on_selectAirLine_clicked
 
-void MainWindow::on_pushButton_clicked(){
-    Travel travel;
-    travel.setModal(true);
-    travel.exec();
-}//on_pushButton_clicked
+
+
+void MainWindow::on_jbtnEditor_clicked(){
+    Editor editor;
+    editor.setModal(true);
+    editor.exec();
+
+}
