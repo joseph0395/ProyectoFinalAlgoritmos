@@ -108,9 +108,9 @@ Aerolinea</string>
   <widget class="QPushButton" name="jbtnAddAirline">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>10</x>
      <y>120</y>
-     <width>93</width>
+     <width>81</width>
      <height>28</height>
     </rect>
    </property>
@@ -346,6 +346,26 @@ Aerolinea</string>
    </property>
    <property name="text">
     <string>Horarios</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="jbtnDeleteAirline">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>120</y>
+     <width>81</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gabriola</family>
+     <pointsize>14</pointsize>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="text">
+    <string>Eliminar</string>
    </property>
   </widget>
  </widget>

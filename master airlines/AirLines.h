@@ -16,23 +16,30 @@ public:
     explicit AirLines(QWidget *parent = nullptr);
     ~AirLines();
 
-    void getCountrys();
+    QList<QString>list;
+
+    QVector<QString>namesTraveler;
+
 private slots:
     void on_jbtnUp_clicked();
     void on_jbtnDown_clicked();
     void on_jbtnSelecAirline_clicked();
-
-
+    void on_jbtnUpdateList_clicked();
+    void addTravel();
     void on_jbtnTravel_clicked();
+
+
+
 
 private:
     Ui::AirLines *ui;
+    void UpdateList();
     void AviancaCostaPana();
     void AviancaCostaMexico();
     void copaIrlinesEuropaRusia();
     void copaIrlinesFranciaUSA();
-    QList<QString>getListAirlines();
 
+    void addTraveler();
 
 
 };
