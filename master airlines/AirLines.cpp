@@ -4,8 +4,10 @@
 #include <QLinkedList>
 #include <QQueue>
 #include <QVector>
+#include <ctime>
 #include "Travel.h"
 #include "Editor.h"
+
 
 
 AirLines::AirLines(QWidget *parent) :
@@ -100,18 +102,19 @@ void AirLines::AviancaCostaPana(){
     ui->jlbCountriesOSecond->setText("Costa Rica->");
     ui->jlbCountriesISecond->setText("Panama");
 
-    double OFirstHour=8.00;
-    double IFirstHour=10.00;
+    double OFirstHour=8.12;
+    double IFirstHour=13.15;
 
-    double OSecondHour=9.35;
-    double ISecondour=11.35;
+    double OSecondHour=9.15;
+    double ISecondour=13.12;
 
     QQueue<double> cola;
-    cola.enqueue(ISecondour);
-    cola.enqueue(OSecondHour);
 
     cola.enqueue(IFirstHour);
     cola.enqueue(OFirstHour);
+
+    cola.enqueue(ISecondour);
+    cola.enqueue(OSecondHour);
 
     ui->jcbxCountriesFirst->clear();
     ui->jcbxCountriesFirst->addItem(QString::number(cola.dequeue())+"-"+QString::number(cola.dequeue())+" am");
@@ -125,17 +128,18 @@ void AirLines::AviancaCostaMexico(){
     ui->jlbCountriesIFirst->setText("Mexico");
 
     double OFirstHour=5.15;
-    double IFirstHour=6.45;
+    double IFirstHour=11.45;
 
-    double OSecondHour=9.35;
-    double ISecondour=10.55;
+    double OSecondHour=6.35;
+    double ISecondour=11.45;
 
     QQueue<double> cola;
-    cola.enqueue(ISecondour);
-    cola.enqueue(OSecondHour);
 
     cola.enqueue(IFirstHour);
     cola.enqueue(OFirstHour);
+
+    cola.enqueue(ISecondour);
+    cola.enqueue(OSecondHour);
 
     ui->jcbxCountriesSecond->clear();
     ui->jcbxCountriesSecond->addItem(QString::number(cola.dequeue())+"-"+QString::number(cola.dequeue())+" am");
@@ -150,10 +154,10 @@ void AirLines::copaIrlinesEuropaRusia(){
 
 
     double OFirstHour=6.35;
-    double IFirstHour=11.45;
+    double IFirstHour=15.45;
 
     double OSecondHour=7.15;
-    double ISecondour=11.55;
+    double ISecondour=14.55;
 
     QQueue<double> cola;
     cola.enqueue(ISecondour);
@@ -171,11 +175,11 @@ void AirLines::copaIrlinesFranciaUSA(){
     ui->jlbCountriesOSecond->setText("Francia->");
     ui->jlbCountriesISecond->setText("U.S.A");
 
-    double OFirstHour=7.05;
-    double IFirstHour=10.07;
+    double OFirstHour=17.15;
+    double IFirstHour=16.47;
 
     double OSecondHour=8.20;
-    double ISecondour=11.35;
+    double ISecondour=15.59;
 
     QQueue<double> cola;
     cola.enqueue(ISecondour);
@@ -205,29 +209,30 @@ void addInPut(QString name){
 
 //Dependiendo del radio boton seleccionado sera el nombre que guarde en cada array de salida y llegada
 void AirLines::addTravel(){
-    if(ui->jrbtnFirstAirline->isChecked()==true){
-        addOutPut(ui->jlbCountriesOFirst->text());
-        addInPut(ui->jlbCountriesIFirst->text());
-    }//El primer radio boton
+    if(showFlights1()==true){
+        if(ui->jrbtnFirstAirline->isChecked()==true){
+            addOutPut(ui->jlbCountriesOFirst->text());
+            addInPut(ui->jlbCountriesIFirst->text());
+        }//El primer radio boton
+    }//codicional para que no muestre vuelos en las horas que no son
 
-    if(ui->jrbtnSecondAirline->isChecked()==true){
-        addOutPut(ui->jlbCountriesOSecond->text());
-        addInPut(ui->jlbCountriesISecond->text());
-    }//El segundo radio boton
-
+    if(showFlights2()==true){
+        if(ui->jrbtnSecondAirline->isChecked()==true){
+            addOutPut(ui->jlbCountriesOSecond->text());
+            addInPut(ui->jlbCountriesISecond->text());
+        }//El segundo radio boton
+    }//condicional para que no muestre vuelos en horas que no son
 }//agrega los detinos de llegada y salida a sus respectivos array
 
 //Llama al metodo addTravel pasandole por parametro los array con los detinos que lleve hasta ese momento para mostrar la ventana de vuelos
 void AirLines::on_jbtnTravel_clicked(){
-    /*Travel travel;
+    Travel travel;
     addTravel();
-    travel.setName(vectorInput,vectorOutPut);
+    travel.setName(vectorInput,vectorOutPut,showFlights1(),showFlights2());
     travel.setModal(true);
     travel.exec();
-    */
 
-    addTraveler();
-   qDebug()<<namesTraveler;
+
 
 }//muestra la ventana de vuelos con los vuelos hasta el momento
 
@@ -243,7 +248,43 @@ void AirLines::addTraveler(){
     traveler+=ui->lnedTravelerNationality->text()+"#";
     namesTraveler<<traveler;
 
+}//Crea un String que sera el que se agregara a un vector con los datos del pasajero
+
+int AirLines::getSystemHour(){
+    int hour=0;
+
+    /*para obtener toda la fecha con mes dia anio hora etc
+    time_t tiempoAhora;
+    time(&tiempoAhora);
+    char* strDechaHora=ctime(&tiempoAhora);
+    qDebug()<<strDechaHora;
+    */
+
+    //para obtener solo la hora hare lo siguiente
+    time_t tiempoAhora;
+    time(&tiempoAhora);
+    struct tm *miTiempo=localtime(&tiempoAhora);
+    hour=miTiempo->tm_hour;
+
+    return hour;
+}//obtengo la hora actual del systema
+
+
+bool AirLines::showFlights1(){
+   QString hour=ui->jcbxCountriesFirst->currentText().split(".")[0];
+
+   if(getSystemHour()<hour.toInt())
+        return true;
+
+    return false;
 }
 
 
+bool AirLines::showFlights2(){
+   QString hour=ui->jcbxCountriesSecond->currentText().split(".")[0];
 
+   if(getSystemHour()<hour.toInt())
+        return true;
+
+    return false;
+}
