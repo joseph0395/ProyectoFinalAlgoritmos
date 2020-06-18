@@ -30,7 +30,6 @@ private slots:
 
 
 
-
 private:
     Ui::AirLines *ui;
     void UpdateList();
@@ -38,10 +37,12 @@ private:
     void AviancaCostaMexico();
     void copaIrlinesEuropaRusia();
     void copaIrlinesFranciaUSA();
+    int  getSystemHour();
 
     void addTraveler();
 
-
+    bool showFlights1();
+    bool showFlights2();
 };
 
 #endif // AIRLINES_H
