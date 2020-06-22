@@ -606,6 +606,26 @@
     <string>Actualizar</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="jbtnListFligths">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>240</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gabriola</family>
+     <pointsize>16</pointsize>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="text">
+    <string>Lista de Vuelos</string>
+   </property>
+  </widget>
  </widget>
  <resources>
   <include location="images.qrc"/>

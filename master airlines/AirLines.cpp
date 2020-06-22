@@ -7,6 +7,7 @@
 #include <ctime>
 #include "Travel.h"
 #include "Editor.h"
+#include "FlightWindow.h"
 
 
 
@@ -39,7 +40,7 @@ void AirLines::UpdateList(){
 }//Actualiza las lista si en el editor se le aplica algun cambio
 
 void AirLines::on_jbtnUpdateList_clicked(){
-   UpdateList();
+    UpdateList();
 }//accede al UpdateList para que mi list sea actualizada
 
 
@@ -127,19 +128,21 @@ void AirLines::AviancaCostaMexico(){
     ui->jlbCountriesOFirst->setText("Costa Rica->");
     ui->jlbCountriesIFirst->setText("Mexico");
 
-    double OFirstHour=5.15;
-    double IFirstHour=11.45;
+    double OFirstHour=18.15;
+    double IFirstHour=19.45;
 
     double OSecondHour=6.35;
     double ISecondour=11.45;
 
     QQueue<double> cola;
 
-    cola.enqueue(IFirstHour);
-    cola.enqueue(OFirstHour);
 
     cola.enqueue(ISecondour);
     cola.enqueue(OSecondHour);
+
+    cola.enqueue(IFirstHour);
+    cola.enqueue(OFirstHour);
+
 
     ui->jcbxCountriesSecond->clear();
     ui->jcbxCountriesSecond->addItem(QString::number(cola.dequeue())+"-"+QString::number(cola.dequeue())+" am");
@@ -149,15 +152,15 @@ void AirLines::AviancaCostaMexico(){
 
 
 void AirLines::copaIrlinesEuropaRusia(){
-    ui->jlbCountriesOFirst->setText("Europa->");
+    ui->jlbCountriesOFirst->setText("Francia->");
     ui->jlbCountriesIFirst->setText("Rusia");
 
 
     double OFirstHour=6.35;
     double IFirstHour=15.45;
 
-    double OSecondHour=7.15;
-    double ISecondour=14.55;
+    double OSecondHour=14.15;
+    double ISecondour=19.55;
 
     QQueue<double> cola;
     cola.enqueue(ISecondour);
@@ -175,8 +178,8 @@ void AirLines::copaIrlinesFranciaUSA(){
     ui->jlbCountriesOSecond->setText("Francia->");
     ui->jlbCountriesISecond->setText("U.S.A");
 
-    double OFirstHour=17.15;
-    double IFirstHour=16.47;
+    double OFirstHour=18.55;
+    double IFirstHour=22.47;
 
     double OSecondHour=8.20;
     double ISecondour=15.59;
@@ -195,7 +198,7 @@ void AirLines::copaIrlinesFranciaUSA(){
 }
 
 
-//--------------------------------------------------------------------------------------------------------------------------//
+//---------------------------------------------------------1-----------------------------------------------------------------//
 QVector<QString> vectorOutPut;//Vector para guardar los lugares de salida de los vuelos
 QVector<QString> vectorInput;//Vector para guardar los lugares de llegadas de los vuelos
 
@@ -226,13 +229,16 @@ void AirLines::addTravel(){
 
 //Llama al metodo addTravel pasandole por parametro los array con los detinos que lleve hasta ese momento para mostrar la ventana de vuelos
 void AirLines::on_jbtnTravel_clicked(){
-    Travel travel;
+    /*Travel travel;
     addTravel();
-    travel.setName(vectorInput,vectorOutPut,showFlights1(),showFlights2());
+    travel.setName(vectorInput,vectorOutPut);
     travel.setModal(true);
     travel.exec();
+*/
 
 
+
+setUpFlightWindow();
 
 }//muestra la ventana de vuelos con los vuelos hasta el momento
 
@@ -288,3 +294,66 @@ bool AirLines::showFlights2(){
 
     return false;
 }
+
+//--------------------------------------------2-------------------------------------------
+void AirLines::verticeCostaRica(){
+    if(ui->jrbtnFirstAirline->isChecked()==true && ui->jlbCountriesOFirst->text()=="Costa Rica->"){
+    ListVerticesCostaRica<<ui->jlbCountriesIFirst->text();
+    listVerticesDestination<<ui->jlbCountriesIFirst->text();
+    listHoursCostaRica<<ui->jcbxCountriesFirst->currentText().split("-")[0];
+    listHours<<ui->jcbxCountriesFirst->currentText().split("-")[0];
+    }
+
+    if(ui->jrbtnSecondAirline->isChecked()==true && ui->jlbCountriesOSecond->text()=="Costa Rica->"){
+    ListVerticesCostaRica<<ui->jlbCountriesISecond->text();
+    listVerticesDestination<<ui->jlbCountriesISecond->text();
+    listHoursCostaRica<<ui->jcbxCountriesSecond->currentText().split("-")[0];
+    listHours<<ui->jcbxCountriesSecond->currentText().split("-")[0];
+    }
+
+}//verticeCostaRica adjunta a las listas de horas y a las listas de destinos la hora y destino correspondientes
+
+
+void AirLines::verticeFrancia(){
+    if(ui->jrbtnFirstAirline->isChecked()==true && ui->jlbCountriesOFirst->text()=="Francia->"){
+    ListVerticesFrancia<<ui->jlbCountriesIFirst->text();
+    listVerticesDestination<<ui->jlbCountriesIFirst->text();
+    listHoursFrancia<<ui->jcbxCountriesFirst->currentText().split("-")[0];
+    listHours<<ui->jcbxCountriesFirst->currentText().split("-")[0];
+    }
+
+    if(ui->jrbtnSecondAirline->isChecked()==true && ui->jlbCountriesOSecond->text()=="Francia->"){
+    ListVerticesFrancia<<ui->jlbCountriesISecond->text();
+    listVerticesDestination<<ui->jlbCountriesISecond->text();
+    listHoursFrancia<<ui->jcbxCountriesSecond->currentText().split("-")[0];
+    listHours<<ui->jcbxCountriesSecond->currentText().split("-")[0];
+    }
+
+
+}//verticeFrancia adjunta a las listas de horas y a las listas de destinos la hora y destino correspondientes
+
+
+
+
+////////////////////////ACTUALIZAR LA PANTALLA CON LOS VUELOS///////////////////////////////////////////////
+
+
+
+void AirLines::setUpFlightWindow(){
+
+    verticeCostaRica();
+    verticeFrancia();
+
+
+}//setUpFlightWindow
+
+void AirLines::on_jbtnListFligths_clicked(){
+    FlightWindow fw;
+
+    fw.addDatesFlight(listHours,listVerticesDestination);
+    fw.setModal(true);
+    fw.exec();
+
+
+
+}//jbtnListFligths
