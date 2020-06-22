@@ -88,6 +88,26 @@
      <string>Editor</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="jbtnFligtWindow">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>148</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Gabriola</family>
+      <pointsize>14</pointsize>
+      <underline>true</underline>
+     </font>
+    </property>
+    <property name="text">
+     <string>Ventana de vuelos</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

@@ -20,6 +20,8 @@ private slots:
 
     void on_jbtnEditor_clicked();
 
+    void on_jbtnFligtWindow_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

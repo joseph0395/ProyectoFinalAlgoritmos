@@ -8,5 +8,8 @@
         <file>imagenes qt/avion 3.jpg</file>
         <file>imagenes qt/mapa 1.jpg</file>
         <file>imagenes qt/hacker 1.jpg</file>
+        <file>imagenes qt/pantalla vuelos1.jpg</file>
+        <file>imagenes qt/baner 1.jpg</file>
+        <file>imagenes qt/linea 1.png</file>
     </qresource>
 </RCC>

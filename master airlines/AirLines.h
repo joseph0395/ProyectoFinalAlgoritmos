@@ -17,8 +17,18 @@ public:
     ~AirLines();
 
     QList<QString>list;
+    QList<QString>listVerticesDestination;
+    QList<QString>listHours;
+    QList<QString>ListVerticesCostaRica;
+    QList<QString>ListVerticesFrancia;
+    QList<QString>listHoursCostaRica;
+    QList<QString>listHoursFrancia;
+
 
     QVector<QString>namesTraveler;
+
+    void setUpFlightWindow();
+
 
 private slots:
     void on_jbtnUp_clicked();
@@ -30,6 +40,9 @@ private slots:
 
 
 
+
+    void on_jbtnListFligths_clicked();
+
 private:
     Ui::AirLines *ui;
     void UpdateList();
@@ -38,11 +51,13 @@ private:
     void copaIrlinesEuropaRusia();
     void copaIrlinesFranciaUSA();
     int  getSystemHour();
-
     void addTraveler();
 
     bool showFlights1();
     bool showFlights2();
+    void verticeCostaRica();
+    void verticeFrancia();
+
 };
 
 #endif // AIRLINES_H
